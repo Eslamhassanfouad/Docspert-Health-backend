@@ -1,11 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Author(models.Model):
-    author_name=models.CharField(max_length=50)
-    author_email=models.CharField(max_length=100)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
     def __str__(self):
-        return self.author_name
+        return self.user.username
     
 
 class Book(models.Model):
@@ -18,6 +18,7 @@ class Book(models.Model):
 class Page(models.Model):
     page_content=models.CharField(max_length=2000)
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='page')
+    page_number=models.PositiveIntegerField()
     def __str__(self):
         return self.book
     
