@@ -10,6 +10,10 @@ from rest_framework.permissions import IsAuthenticated
 from .permissions import IsAuthor,IsReader
 
 
+class User(generics.RetrieveUpdateDestroyAPIView):
+    queryset=Author.objects.all()
+    serializer_class=AuthorSerializer
+    lookup_field='pk'
 #Book Classes   
 class BookList(generics.ListAPIView):
     queryset=Book.objects.all()

@@ -18,4 +18,5 @@ urlpatterns = [
     path('pages/<int:pk>/',views.PageEdit.as_view()),
     path('pages/post/',views.BookPost.as_view()),
     path('register/',views.register),
+    path('user/<int:pk>/',views.User.as_view()),
 ]
